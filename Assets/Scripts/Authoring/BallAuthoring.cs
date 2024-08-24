@@ -1,14 +1,17 @@
 using Unity.Entities;
 using UnityEngine;
 using BounceDOTS.Components;
+using Unity.Mathematics;
 
 namespace BounceDOTS.Authoring
 {
     public class BallAuthoring : MonoBehaviour
     {
-        public float Speed = 5f;
-        public float JumpForce = 10f;
-        public float Mass = 1f;
+        public float MaxSpeed = 10f;
+        public float MaxAcceleration = 10f;
+        public float Bounciness = 0.5f;
+        public Vector2 AllowedAreaMin = new Vector2(-5f, -5f);
+        public Vector2 AllowedAreaMax = new Vector2(5f, 5f);
     }
 
     public class BallBaker : Baker<BallAuthoring>
@@ -19,9 +22,15 @@ namespace BounceDOTS.Authoring
             AddComponent(entity, new BallTag());
             AddComponent(entity, new BallStats
             {
-                Speed = authoring.Speed,
-                JumpForce = authoring.JumpForce,
-                Mass = authoring.Mass
+                MaxSpeed = authoring.MaxSpeed,
+                MaxAcceleration = authoring.MaxAcceleration,
+                Bounciness = authoring.Bounciness
+            });
+            AddComponent(entity, new BallMovement { Velocity = float2.zero });
+            AddComponent(entity, new AllowedArea
+            {
+                Min = authoring.AllowedAreaMin,
+                Max = authoring.AllowedAreaMax
             });
             AddComponent(entity, new PlayerInput());
         }
