@@ -1,6 +1,7 @@
 using Unity.Entities;
 using UnityEngine;
 using BounceDOTS.Components;
+using Unity.Mathematics;
 
 namespace BounceDOTS.Systems
 {

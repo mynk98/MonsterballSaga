@@ -9,7 +9,7 @@ namespace BounceDOTS.Systems
     {
         protected override void OnUpdate()
         {
-            float deltaTime = Time.DeltaTime;
+            float deltaTime = SystemAPI.Time.DeltaTime;
 
             Entities
                 .WithAll<BallTag>()

@@ -11,7 +11,7 @@ namespace BounceDOTS.Bootstrap
             DefaultWorldInitialization.Initialize("Default World", false);
             World.DefaultGameObjectInjectionWorld.GetOrCreateSystem<InputSystem>();
             World.DefaultGameObjectInjectionWorld.GetOrCreateSystem<BallMovementSystem>();
-            World.DefaultGameObjectInjectionWorld.GetOrCreateSystem<CameraFollowSystem>();
+            //World.DefaultGameObjectInjectionWorld.GetOrCreateSystem<CameraFollowSystem>();
         }
     }
 }
