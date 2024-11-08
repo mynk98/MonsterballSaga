@@ -10,8 +10,6 @@ namespace BounceDOTS.Authoring
         public float MaxSpeed = 10f;
         public float MaxAcceleration = 10f;
         public float Bounciness = 0.5f;
-        public Vector2 AllowedAreaMin = new Vector2(-5f, -5f);
-        public Vector2 AllowedAreaMax = new Vector2(5f, 5f);
     }
 
     public class BallBaker : Baker<BallAuthoring>
@@ -27,11 +25,6 @@ namespace BounceDOTS.Authoring
                 Bounciness = authoring.Bounciness
             });
             AddComponent(entity, new BallMovement { Velocity = float2.zero });
-            AddComponent(entity, new AllowedArea
-            {
-                Min = authoring.AllowedAreaMin,
-                Max = authoring.AllowedAreaMax
-            });
             AddComponent(entity, new PlayerInput());
         }
     }
